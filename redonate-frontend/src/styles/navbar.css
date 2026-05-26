@@ -1,0 +1,249 @@
+
+:root {
+  --nav-blue: #2563eb;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-border: rgba(226, 232, 240, 0.8);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nav-border);
+  padding: 12px 0;
+}
+
+.nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: #0f172a;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--nav-blue);
+}
+
+/* Center Links - Button Style */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.nav-links {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+  gap: 4px;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.nav-links button {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links button:hover {
+  color: var(--nav-blue);
+}
+
+.nav-links button.active {
+  background: white;
+  color: var(--nav-blue);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Section */
+.nav-right {
+  position: relative;
+}
+
+.login-trigger {
+  background: var(--nav-blue);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-trigger:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.rotate { transform: rotate(180deg); }
+
+/* Premium Dropdown */
+.dropdown-premium {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: white;
+  border: 1px solid var(--nav-border);
+  width: 220px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 8px;
+}
+
+.dropdown-section label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 10px 12px 4px;
+}
+
+.dropdown-premium p {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-premium p:hover {
+  background: #f8fafc;
+  color: var(--nav-blue);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 8px 0;
+}
+
+.register-link {
+  color: var(--nav-blue) !important;
+  text-align: center;
+}
+
+/* Logged In State */
+.user-profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background: #eff6ff;
+  color: var(--nav-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.avatar-circle:hover {
+  border-color: var(--nav-blue);
+}
+
+.logout-btn {
+  position: relative;
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #fecaca;
+}
+
+.notification-nav-btn {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.notification-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #dc2626;
+  color: white;
+  border: 2px solid white;
+  font-size: 0.68rem;
+  line-height: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .nav-links span { display: none; }
+  .nav-container {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .nav-links button {
+    padding: 8px 10px;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+}
