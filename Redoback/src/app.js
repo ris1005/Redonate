@@ -11,7 +11,7 @@ const userRoutes = require("./routes/user.routes");
 const app = express();
 
 app.use(cors({
-  origin: "https://redonate.vercel.app/",
+  origin: "https://redonate.vercel.app",
   credentials: true
 }));
 app.use(express.json({ limit: "10mb" }));
