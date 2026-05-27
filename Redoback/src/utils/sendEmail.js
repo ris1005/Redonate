@@ -1,31 +1,22 @@
 
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 10000,
-});
-
-// Verify SMTP connection
-transporter.verify(function (error, success) {
-  if (error) {
-    console.log("VERIFY ERROR:", error);
-  } else {
-    console.log("Server is ready to send emails");
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (to, subject, text) => {
-  await transporter.sendMail({
-    from: `"ReDonate" <${process.env.EMAIL_USER}>`,
-    to,
-    subject,
-    text,
-  });
+  try {
+    const data = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to,
+      subject,
+      text,
+    });
+
+    console.log("Email sent:", data);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 module.exports = sendEmail;
+
