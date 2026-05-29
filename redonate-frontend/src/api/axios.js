@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://redonate.onrender.com/api",
+  baseURL: "https://redonate-backend.vercel.app/api",
 });
 
 api.interceptors.request.use((req) => {
